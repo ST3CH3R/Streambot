@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>StreamBot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">StreamBot</div>
+
+    <button class="nav active" data-page="dashboard">⌂ <span>Dashboard</span></button>
+    <button class="nav" data-page="twitch">▣ <span>Twitch</span></button>
+    <button class="nav" data-page="tiktok">♪ <span>TikTok</span></button>
+    <button class="nav" data-page="sounds">🔊 <span>Sound Commands</span></button>
+    <button class="nav" data-page="commands">⌨ <span>Commands</span></button>
+    <button class="nav" data-page="logs">▤ <span>Logs</span></button>
+    <button class="nav" data-page="chat">💬 <span>Chat</span></button>
+    <button class="nav" data-page="points">☆ <span>Punkte</span></button>
+    <button class="nav" data-page="bot">🤖 <span>Bot</span></button>
+    <button class="nav" data-page="settings">⚙ <span>Einstellungen</span></button>
+
+    <div class="sidebarBrand">Powered by ST3CH3R</div>
+  </aside>
+
+  <main class="app">
+    <section id="page-dashboard" class="page active">
+      <div class="topGrid">
+        <div class="card statusCard">
+          <div class="cardTitle">▣ Twitch <span id="twitchBadge" class="badge bad">Deaktiviert</span></div>
+          <p><b>Bot:</b> <span id="dashTwitchBot">-</span></p>
+          <p><b>Kanal:</b> <span id="dashTwitchChannel">-</span></p>
+          <p id="twitchStatus" class="bad">● Getrennt</p>
+        </div>
+
+        <div class="card statusCard">
+          <div class="cardTitle">♪ TikTok <span id="tiktokBadge" class="badge bad">Deaktiviert</span></div>
+          <p><b>User:</b> <span id="dashTikTokUser">-</span></p>
+          <p id="tiktokStatus" class="bad">● Getrennt</p>
+        </div>
+
+        <div class="card statusCard">
+          <div class="cardTitle">🔗 Links</div>
+          <div class="linkLine" id="dashDiscord">-</div>
+          <div class="linkLine" id="dashTikTokLink">-</div>
+          <div class="linkLine" id="dashYoutube">-</div>
+        </div>
+
+        <div class="card statusCard">
+          <div class="cardTitle">🤖 Bot</div>
+          <p><b>Name:</b> <span id="dashBotName">StreamBot</span></p>
+          <p><b>Prefix:</b> <span id="dashPrefix">!</span></p>
+          <p id="botStatus" class="bad">● Getrennt</p>
+          <div class="bot-actions">
+            <button id="startBotCardBtn" class="bot-start">▶ Start</button>
+            <button id="stopBotCardBtn" class="bot-stop">⏹ Stop</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboardGrid">
+        <section class="card chatBig">
+          <div class="sectionHead">
+            <h2>💬 Chat</h2>
+            <button id="clearChatBtn" class="mini">Chat leeren</button>
+          </div>
+          <div id="chat"></div>
+          <div class="sendRow">
+            <input id="manualMessage" placeholder="Nachricht senden...">
+            <button id="sendManualBtn">Senden</button>
+          </div>
+        </section>
+
+        <section class="rightColumn">
+          <div class="card soundBox">
+            <div class="sectionHead">
+              <h2>🔊 Sound Commands</h2>
+              <button id="openSoundsBtn" class="mini">Ordner öffnen</button>
+            </div>
+
+            <div class="soundForm">
+              <input id="soundCommand" placeholder="Command z.B. !airhorn">
+              <input id="soundFile" placeholder="Datei z.B. airhorn.mp3">
+              <input id="soundCooldown" type="number" placeholder="Cooldown">
+              <input id="soundCost" type="number" placeholder="Kosten">
+              <button id="addSoundBtn">Hinzufügen</button>
+            </div>
+
+            <div id="soundList"></div>
+          </div>
+
+          <div class="card logsBox">
+            <div class="sectionHead">
+              <h2>Logs</h2>
+              <select id="logFilter">
+                <option value="ALL">Alle</option>
+                <option value="SOUND">Sound</option>
+                <option value="TWITCH">Twitch</option>
+                <option value="TIKTOK">TikTok</option>
+                <option value="SYSTEM">System</option>
+                <option value="ERROR">Fehler</option>
+              </select>
+            </div>
+            <div id="logs"></div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="page-twitch" class="page">
+      <div class="card single">
+        <h2>▣ Twitch Einstellungen</h2>
+        <label>Aktiv <input id="twitchEnabled" type="checkbox"></label>
+        <input id="twitchUser" placeholder="Bot Name">
+        <input id="twitchOAuth" placeholder="oauth:token">
+        <input id="twitchChannel" placeholder="Kanalname">
+        <input id="twitchFollowToken" placeholder="DecAPI Follow Token für !follow">
+        <button id="saveTwitchBtn">Speichern</button>
+        <div class="helpBox">
+          <h3>Twitch Token erstellen</h3>
+          <ol>
+            <li>Öffne <b>https://twitchtokengenerator.com/</b>.</li>
+            <li>Klicke auf <b>Bot Chat Token</b>.</li>
+            <li>Falls du Scopes auswählen musst: <b>chat:read</b> und <b>chat:edit</b>.</li>
+            <li>Klicke auf <b>Generate Token!</b> und melde dich bei Twitch an.</li>
+            <li>Kopiere den <b>ACCESS TOKEN</b>.</li>
+            <li>Trage ihn oben bei <b>oauth:token</b> ein. Wenn <b>oauth:</b> fehlt, davor schreiben.</li>
+          </ol>
+          <p>Bot Name ist der Twitch-Account, mit dem du den Token erstellt hast. Kanalname ist dein Stream-Kanal.</p>
+          <p>Für <b>!follow</b>: Öffne <b>https://decapi.me/twitch/followage</b>, melde dich dort an, kopiere nur den Token aus "Here is your token..." und trage ihn oben bei <b>DecAPI Follow Token</b> ein. Nicht den ganzen $readapi Text eintragen.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-tiktok" class="page">
+      <div class="card single">
+        <h2>♪ TikTok Einstellungen</h2>
+        <label>Aktiv <input id="tiktokEnabled" type="checkbox"></label>
+        <input id="tiktokUser" placeholder="TikTok Name ohne @">
+        <button id="saveTikTokBtn">Speichern</button>
+      </div>
+    </section>
+
+    <section id="page-sounds" class="page">
+      <div class="card single wide">
+        <div class="sectionHead">
+          <h2>🔊 Sound Commands</h2>
+          <button id="openSoundsBtn2" class="mini">Sounds Ordner öffnen</button>
+        </div>
+        <p class="small">Lege deine MP3/WAV/OGG Dateien in den Ordner <b>sounds</b>.</p>
+        <div class="soundForm full">
+          <input id="soundCommand2" placeholder="Command z.B. !airhorn">
+          <input id="soundFile2" placeholder="Datei z.B. airhorn.mp3">
+          <input id="soundCooldown2" type="number" placeholder="Cooldown Sekunden">
+          <input id="soundCost2" type="number" placeholder="Punkte Kosten">
+          <input id="soundResponse2" placeholder="Antwort z.B. @USER hat Sound gestartet!">
+          <button id="addSoundBtn2">Hinzufügen</button>
+        </div>
+        <div id="soundList2"></div>
+        <button id="saveSoundsBtn">Sounds speichern</button>
+      </div>
+    </section>
+
+    
+    <section id="page-commands" class="page">
+      <div class="card single wide">
+        <h2>⌨ Commands</h2>
+
+        <div class="ttsBox">
+          <h3>🔊 Piper TTS</h3>
+          <label class="checkLine">TTS aktiv <input id="ttsEnabled" type="checkbox"></label>
+
+          <div class="ttsGrid">
+            <select id="ttsPlatforms">
+              <option value="both">Twitch und TikTok</option>
+              <option value="twitch">Nur Twitch</option>
+              <option value="tiktok">Nur TikTok</option>
+            </select>
+            <input id="ttsCommand" placeholder="TTS Start z.B. .">
+            <select id="ttsSpeakFormat">
+              <option value="user_says">Username sagt Text</option>
+              <option value="user_text">Username Text</option>
+              <option value="text_only">Nur Text</option>
+            </select>
+            <select id="piperVoice"></select>
+            <input id="ttsCooldown" type="number" placeholder="Cooldown Sekunden">
+            <input id="ttsMaxLength" type="number" placeholder="Max. Textlänge">
+            <input id="ttsPointsCost" type="number" placeholder="Punkte Kosten">
+            <input id="ttsLengthScale" type="number" step="0.1" placeholder="Tempo 1.0">
+            <input id="ttsVolume" type="number" step="0.1" placeholder="Lautstärke 1">
+          </div>
+
+          <div class="ttsActions">
+            <button id="saveTtsBtn">TTS speichern</button>
+            <button id="testTtsBtn">Stimme testen</button>
+            <button id="openPiperBtn">Piper Ordner öffnen</button>
+          </div>
+
+          <p class="small">Startzeichen leer = normale Chatnachrichten werden vorgelesen. Beispiele: <b>. Hallo</b>, <b>! Hallo</b> oder ohne Zeichen <b>Hallo</b>.</p>
+        </div>
+
+        <h2>⌨ Eigene Text-Commands</h2>
+        <p class="small">Beispiele: !discord, !regeln, !server. Platzhalter: @USER, {user}, {platform}. Fest eingebaut: !follow.</p>
+        <div class="commandForm">
+          <input id="customCommand" placeholder="Command z.B. !discord">
+          <input id="customResponse" placeholder="Antwort z.B. @USER hier ist unser Discord: ...">
+          <button id="addCustomCommandBtn">Hinzufügen</button>
+        </div>
+        <div id="customCommandList"></div>
+        <button id="saveCustomCommandsBtn">Commands speichern</button>
+      </div>
+    </section>
+
+    <section id="page-logs" class="page">
+      <div class="card single wide">
+        <div class="sectionHead">
+          <h2>▤ Logs</h2>
+          <select id="logFilter2">
+            <option value="ALL">Alle</option>
+            <option value="SOUND">Sound</option>
+            <option value="TWITCH">Twitch</option>
+            <option value="TIKTOK">TikTok</option>
+            <option value="SYSTEM">System</option>
+            <option value="ERROR">Fehler</option>
+          </select>
+        </div>
+        <div id="logsFull"></div>
+      </div>
+    </section>
+
+    <section id="page-chat" class="page">
+      <div class="card single wide tall">
+        <div class="sectionHead">
+          <h2>💬 Großer Chat</h2>
+          <button id="clearChatBtn2" class="mini">Chat leeren</button>
+        </div>
+        <div id="chatFull"></div>
+      </div>
+    </section>
+
+    <section id="page-points" class="page">
+      <div class="card single">
+        <h2>☆ Punkte</h2>
+        <button id="refreshPoints">Aktualisieren</button>
+        <div id="points"></div>
+      </div>
+    </section>
+
+    <section id="page-bot" class="page">
+      <div class="card single">
+        <h2>🤖 Bot Steuerung</h2>
+        <input id="botName" placeholder="Bot Name">
+        <input id="prefix" placeholder="Prefix z.B. !">
+        <button id="startBtn">Bot starten</button>
+        <button id="stopBtn">Bot stoppen</button>
+        <button id="saveBotBtn">Speichern</button>
+      </div>
+    </section>
+
+    <section id="page-settings" class="page">
+      <div class="card single">
+        <h2>⚙ Einstellungen</h2>
+        <input id="discordLink" placeholder="Discord Link">
+        <input id="tiktokLink" placeholder="TikTok Link">
+        <input id="youtubeLink" placeholder="YouTube Link">
+        <button id="saveSettingsBtn">Einstellungen speichern</button>
+        <button id="settingsFolderBtn">Speicherordner öffnen</button>
+        <p class="small">Commands: !help, !discord, !tiktok, !youtube, !punkte, !top, !sounds, !follow</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

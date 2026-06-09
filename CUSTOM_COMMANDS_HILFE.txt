@@ -1,0 +1,13 @@
+EIGENE COMMANDS
+
+Links gibt es jetzt den Menüpunkt Commands.
+
+Beispiel:
+Command: !discord
+Antwort: @USER hier ist unser Discord: https://discord.gg/deinlink
+
+Platzhalter:
+@USER oder {user} = Zuschauername
+{platform} = twitch oder tiktok
+
+Commands werden automatisch gespeichert.

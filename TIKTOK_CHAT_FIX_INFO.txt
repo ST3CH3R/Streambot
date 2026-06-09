@@ -1,0 +1,13 @@
+TIKTOK CHAT FIX
+
+Diese Version schreibt in Logs:
+- TikTok verbunden mit @name
+- Room-ID
+- Chat empfangen von USER: TEXT
+- Likes / Member / Follow / Gifts
+
+Wenn TikTok verbunden ist, aber kein "Chat empfangen" kommt:
+1. Prüfe, ob der TikTok-Account wirklich LIVE ist.
+2. Schreibe mit einem zweiten TikTok-Account in den Live-Chat.
+3. Nicht nur in TikTok Live Studio testen, sondern im echten TikTok Live Chat.
+4. Prüfe, ob der Benutzername ohne @ exakt stimmt.

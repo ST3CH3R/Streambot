@@ -1,0 +1,21 @@
+{
+  "twitch": {
+    "enabled": true,
+    "username": "DEIN_TWITCH_BOT_NAME",
+    "oauth": "oauth:DEIN_TWITCH_OAUTH_TOKEN",
+    "channel": "DEIN_TWITCH_KANAL"
+  },
+  "tiktok": {
+    "enabled": true,
+    "username": "DEIN_TIKTOK_NAME_OHNE_@"
+  },
+  "links": {
+    "discord": "https://discord.gg/DEINLINK",
+    "tiktok": "https://www.tiktok.com/@DEINNAME",
+    "youtube": "https://youtube.com/@DEINNAME"
+  },
+  "bot": {
+    "name": "StreamBot",
+    "prefix": "!"
+  }
+}

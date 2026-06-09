@@ -1,0 +1,55 @@
+STREAMBOT STABLE FIX
+
+Diese Version behebt:
+- Buttons reagieren wieder
+- Sound hinzufügen speichert automatisch
+- Sound löschen speichert automatisch
+- Keine Standard-Sounds mehr
+- Bot-Status zeigt Getrennt / Läuft / Fehler
+- Einstellungen werden im Windows Benutzerordner gespeichert
+
+Start:
+npm install
+npm start
+
+TWITCH TOKEN:
+Siehe Datei:
+TWITCH_TOKEN_ANLEITUNG.txt
+
+Kurz:
+https://twitchtokengenerator.com/ öffnen,
+"Bot Chat Token" wählen,
+Token kopieren,
+im StreamBot unter Twitch bei oauth:token eintragen.
+
+EXE bauen:
+npm run build
+
+Danach:
+dist\win-unpacked\StreamBot.exe
+
+SOUNDS:
+Der sounds Ordner liegt neben der StreamBot.exe.
+
+
+TEXT-WRAP-FIX:
+Lange Chat-Nachrichten werden jetzt automatisch umgebrochen.
+Es entsteht kein horizontaler Scrollbalken mehr.
+
+
+TIKTOK SESSIONID FIX:
+Wenn TikTok WebSocket blockiert, trage im TikTok Menü deine sessionid ein.
+Siehe Datei:
+TIKTOK_SESSIONID_HILFE.txt
+
+
+TIKTOK 403 FIX:
+Fehler "Failed to fetch available gifts. status code 403" wurde behoben.
+Die erweiterte TikTok-Gift-Liste ist deaktiviert.
+Chat, Follow und einfache Gift-Erkennung bleiben aktiv.
+
+
+TIKTOK NO SESSION FIELD:
+- Das TikTok sessionid Feld wurde entfernt.
+- Gift-Liste ist deaktiviert, damit 403 nicht mehr kommt.
+- TikTok verbindet nur, wenn der Account wirklich LIVE ist und der Benutzername stimmt.

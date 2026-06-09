@@ -1,0 +1,49 @@
+{
+  "name": "streambot",
+  "version": "3.0.0",
+  "author": "ST3CH3R",
+  "description": "StreamBot Desktop App für Twitch und TikTok",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win portable",
+    "build-installer": "electron-builder --win nsis"
+  },
+  "dependencies": {
+    "@seepine/edge-tts": "^1.2.3",
+    "tmi.js": "^1.8.5",
+    "tiktok-live-connector": "^1.2.3"
+  },
+  "devDependencies": {
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "de.st3ch3r.streambot",
+    "productName": "StreamBot",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer.js",
+      "index.html",
+      "style.css",
+      "config.json",
+      "points.json",
+      "soundCommands.json",
+      "customCommands.json",
+      "ttsSettings.json",
+      "piper/**/*",
+      "tts_output/**/*",
+      "sounds/**/*"
+    ],
+    "win": {
+      "target": [
+        "portable",
+        "nsis"
+      ]
+    }
+  }
+}

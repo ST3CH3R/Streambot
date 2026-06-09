@@ -1,0 +1,29 @@
+PIPER TTS EINRICHTEN
+
+1. Lade Piper für Windows herunter:
+   https://github.com/rhasspy/piper/releases
+
+2. Kopiere piper.exe in diesen Ordner:
+   piper\piper.exe
+
+3. Lade eine deutsche Stimme herunter, z.B.:
+   de_DE-thorsten-high.onnx
+   de_DE-thorsten-high.onnx.json
+
+4. Lege beide Dateien hier rein:
+   piper\voices\
+
+5. StreamBot starten.
+6. Commands -> Piper TTS.
+7. Stimme auswählen.
+8. TTS speichern.
+9. Im Chat testen:
+   . Hallo das wird vorgelesen
+
+Empfohlene Stimmen:
+- de_DE-thorsten-high
+- de_DE-eva_k-x_low
+- de_DE-karlsson-low
+- de_DE-kerstin-low
+
+OBS muss Desktop-Audio aufnehmen.

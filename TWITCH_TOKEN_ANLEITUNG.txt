@@ -1,0 +1,61 @@
+TWITCH TOKEN ANLEITUNG
+
+So erstellst du den Twitch OAuth Token:
+
+1. Öffne diese Seite im Browser:
+   https://twitchtokengenerator.com/
+
+2. Klicke auf "Bot Chat Token".
+   Falls du die Scope-Liste siehst, wähle mindestens:
+   - chat:read
+   - chat:edit
+
+3. Klicke auf "Generate Token!".
+
+4. Melde dich bei Twitch mit dem Account an, der als Bot schreiben soll.
+   Das kann dein eigener Twitch-Account sein oder ein extra Bot-Account.
+
+5. Erlaube die Berechtigungen.
+
+6. Kopiere den ACCESS TOKEN.
+   Wichtig: Wenn dort nur der Token ohne "oauth:" steht, schreibe im StreamBot vorne "oauth:" davor.
+
+   Beispiel:
+   oauth:abcd1234deintoken
+
+7. Öffne StreamBot -> Twitch.
+
+8. Trage ein:
+   Bot Name:
+   Der Twitch-Name des Accounts, mit dem du den Token erstellt hast.
+
+   oauth:token:
+   Dein ACCESS TOKEN mit oauth: davor.
+
+   Kanalname:
+   Dein Twitch-Kanal, in dessen Chat der Bot laufen soll.
+
+9. Speichern klicken.
+
+10. Bot starten.
+
+Hinweis:
+Gib deinen Token nicht an andere weiter. Wer den Token hat, kann mit deinem Bot-Account im Chat schreiben.
+
+!follow / DecAPI Follow Token:
+
+Der Command !follow nutzt zusätzlich einen DecAPI Followage Token.
+Das ist NICHT der normale Twitch oauth:token.
+
+1. Öffne die DecAPI Followage Auth-Seite.
+   https://decapi.me/twitch/followage
+2. Melde dich dort mit Twitch an.
+3. Kopiere nur den Token aus:
+   "Here is your token for the followed & followage APIs"
+4. Öffne StreamBot -> Twitch.
+5. Trage den Token bei "DecAPI Follow Token für !follow" ein.
+6. Speichern klicken.
+
+Wichtig:
+Nicht den kompletten $readapi(...) Text eintragen.
+Nur den Token selbst.
